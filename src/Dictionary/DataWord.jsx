@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import {BsFillPlayFill} from 'react-icons/bs'
 
-const DataWord = ({dictionaryData}) => {
+const DataWord = ({ dictionaryData }) => {
   return (
     <Meaning>
           {
@@ -105,7 +105,7 @@ const Meaning = styled.div`
     color: var(--primary);
   }
 @media screen and (max-width: 950px){
-  . enclosure {
+  .enclosure {
      flex-direction: column;
      gap: 10px;
    }
