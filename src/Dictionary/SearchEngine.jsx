@@ -21,7 +21,6 @@ const SearchEngine = () => {
             const api_url = `https://api.dictionaryapi.dev/api/v2/entries/en/${typeWord}`;
             
             const response = await axios.get(api_url);
-
             setWordMeaning(response.data);
             setError("")
 

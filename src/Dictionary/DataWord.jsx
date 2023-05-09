@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components';
 import {BsFillPlayFill} from 'react-icons/bs'
 
-const DataWord = ({dictionaryData}) => {
+const DataWord = ({ dictionaryData }) => {
   return (
     <Meaning>
           {
