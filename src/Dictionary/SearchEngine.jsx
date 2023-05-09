@@ -27,7 +27,7 @@ const SearchEngine = () => {
 
         } catch (error) {
             if (error.response) {
-                setError("Word not found");
+                setError(`This dictionary does not allow you to search ${typeWord}`);
             } else if (error.request) {
                 setError("internet error. Please check your connection and try again.");
             } else {
@@ -50,7 +50,7 @@ const SearchEngine = () => {
         </form>
         {error && (<Error>{error}</Error>)}
         <DataWord
-            Data={Wordmeaning}
+            dictionaryData={Wordmeaning}
         />
     </SearchInput>
   )

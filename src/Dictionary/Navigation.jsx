@@ -6,32 +6,59 @@ import {RiArrowDropUpLine} from 'react-icons/ri';
 import {RiArrowDropDownLine} from 'react-icons/ri';
 import {MdOutlineLightMode} from "react-icons/md"
 
-const Navigation = ({onChange, checked}) => {
-  const [dropdown, setdropdown] = useState(true);
+const fontOptions = [  
+  { name: "Serif", value: "serif" },
+  { name: "Sans-serif", value: "sans-serif" },
+  { name: "Monospace", value: "monospace" },
+  { name: "Time-New-Roman", value: "Time-New-Roman" },
+];
 
-  const handleDropdown = () =>{
-    setdropdown(!dropdown)
+const Navigation = ({ onChange, checked }) => {
+  const [dropdown, setDropdown] = useState(false);
+  const [selectedFont, setSelectedFont] = useState("serif");
+
+  const handleDropdown = () => {
+    setDropdown(!dropdown)
   }
+
+  const handleFontSelect = (value) => {
+    setSelectedFont(value);
+    setDropdown(false);
+    document.body.style.fontFamily = value;
+  }
+  
   return (
-      <NavigationBar>
-        <div>
-          <span className="dictionary"><RiBook2Line/></span>
-        </div>
-        <PositionLeft>
-          <Dropdown>
-            <div><button onClick={handleDropdown}>Serif</button> {dropdown ? <span><RiArrowDropUpLine/></span> : <span><RiArrowDropDownLine/></span> }</div>
-          </Dropdown>
-          <TranslateToggle>
-            <input type="checkbox" checked={checked} onChange={onChange} />
-            <span className='cirlce-main-toggle'></span>
-          </TranslateToggle>
+    <NavigationBar>
+      <div>
+        <span className="dictionary"><RiBook2Line/></span>
+      </div>
+      <PositionLeft>
+        <Dropdown>
           <div>
-            {
-              checked ? <span className="change-mode-icons" onChange={onChange}><MdOutlineLightMode/></span> : <span className="change-mode-icons" onChange={onChange}><CiDark/></span>
-            }
+            <button onClick={handleDropdown}>{selectedFont}</button>
+            {dropdown ? <span onClick={handleDropdown}><RiArrowDropUpLine/></span> : <span onClick={handleDropdown}><RiArrowDropDownLine/></span>}
           </div>
-        </PositionLeft>
-      </NavigationBar>
+          {dropdown &&
+            // <DropdownOptions>
+              <div className='flex'>
+                {fontOptions.map((option) => (
+                <button key={option.value} onClick={() => handleFontSelect(option.value)}>{option.name}</button>
+              ))}
+              </div>
+            /* </DropdownOptions> */
+          }
+        </Dropdown>
+        <TranslateToggle>
+          <input type="checkbox" checked={checked} onChange={onChange} />
+          <span className='cirlce-main-toggle'></span>
+        </TranslateToggle>
+        <div>
+          {
+            checked ? <span className="change-mode-icons" onChange={onChange}><MdOutlineLightMode/></span> : <span className="change-mode-icons" onChange={onChange}><CiDark/></span>
+          }
+        </div>
+      </PositionLeft>
+    </NavigationBar>
   )
 }
 
@@ -49,6 +76,7 @@ const NavigationBar = styled.div`
   }
 
 `
+// const DropdownOptions = styled.div``
 const TranslateToggle = styled.label`
   position: relative;
   display: inline-block;
@@ -109,7 +137,7 @@ const Dropdown = styled.div`
   div{
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* align-items: center; */
     border-right:  1px solid black;
     padding-right: 10px;
   }
@@ -124,6 +152,11 @@ const Dropdown = styled.div`
     font-size: 30px;
     margin-top: 6px;
     color: var(--placeholder);
+  }
+  .flex{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
   }
 
 `

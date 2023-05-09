@@ -1,16 +1,12 @@
 // import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import Dictionary from './Dictionary/Dictionary';
-// import PracticeDictionary from './Dictionary/PracticeDictionary';
+import Home from './Dictionary/Home'
 
-// function App() {
-//   return (
-//     <BrowserRouter>
-//       <Routes>
-//         <Route path='/' element={<Dictionary/>}/>
-//         <Route path='/latidude' element={<PracticeDictionary/>}/>
-//       </Routes> 
-//     </BrowserRouter>
-//   );
-// }
+function App() {
+  return (
+    <div>
+        <Home />
+    </div>
+  );
+}
 
-// export default App;
+export default App;

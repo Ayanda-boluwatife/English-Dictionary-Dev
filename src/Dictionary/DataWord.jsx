@@ -13,7 +13,7 @@ const DataWord = ({dictionaryData}) => {
                     <div>
                         <div className='enclosure'>
                           <div className='one'>
-                            <h1>Word: {define.word}</h1>
+                            <h1>{define.word}</h1>
                             <h3>Phonetic: {define.phonetic}</h3>
                           </div>
                           <div>
@@ -100,12 +100,42 @@ const Meaning = styled.div`
   }
   .one h1{
     color: var(--placeholder);
+    text-transform: uppercase
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ;
   }
   .one h3{
     color: var(--primary);
   }
 @media screen and (max-width: 950px){
-  . enclosure {
+  .enclosure {
      flex-direction: column;
      gap: 10px;
    }
